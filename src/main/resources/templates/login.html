@@ -5,31 +5,120 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <style>
+            .custom-border {
+                border: 2px solid black;
+                padding: 10px;
+                margin: 5px;
+                text-align: center;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .custom-border:hover {
+                background-color: #f0f0f0;
+            }
+
+            .custom-header {
+                text-align: center;
+                margin-bottom: 20px;
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+            .custom-header {
+                text-align: left; /* Alineación a la izquierda */
+                margin-bottom: 20px;
+                font-size: 24px;
+                font-weight: bold;
+                color: white; /* Color del texto */
+                padding: 10px; /* Espaciado interno */
+                background-color: purple; /* Color del fondo */
+            }
+
+            .header-container {
+                max-width: 10000px; /* Ancho máximo del contenedor */
+                margin: 0 auto; /* Centrar el contenedor horizontalmente */
+            }
+        </style>
+        <script>
+            // Define userRole variable
+            var userRole = "representative";
+
+            // Function to show/hide cards based on userRole
+            function showCards() {
+                const adminCards = document.querySelectorAll(".admin-card");
+                const repCards = document.querySelectorAll(".rep-card");
+                const studentCards = document.querySelectorAll(".student-card");
+
+                adminCards.forEach(card => card.style.display = "none");
+                repCards.forEach(card => card.style.display = "none");
+                studentCards.forEach(card => card.style.display = "none");
+
+                if (userRole === "admin") {
+                    adminCards.forEach(card => card.style.display = "block");
+                } else if (userRole === "representative") {
+                    repCards.forEach(card => card.style.display = "block");
+                } else if (userRole === "student") {
+                    studentCards.forEach(card => card.style.display = "block");
+                }
+            }
+        </script>
     </head>
-    <body>
-        <div class="container">
-            <div class="row">
-                <!-- Contenido para todos los usuarios -->
-                <div class="col-sm">
-                    Revisar Actividades
+    <body onload="showCards();">
+    <div class="container-fluid p-0">
+        <div class="header-container">
+            <div class="custom-header">Matemagicas</div>
+            <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+                <div class="row">
+                    <!-- Contenido para estudiantes -->
+                    <div class="col-sm student-card text-center">
+                        <div class="card custom-border" onclick="location.href = '/actividades'">
+                            <div class="card-body">Actividades</div>
+                        </div>
+
                 </div>
-                <div class="col-sm">
-                    Ver Calificaciones
+                <div class="col-sm student-card text-center">
+                    <div class="card custom-border" onclick="location.href = '/calificaciones'">
+                        <div class="card-body">Calificaciones</div>
+                    </div>
                 </div>
-                <div class="col-sm">
-                    Actividades
+                <!-- Contenido para representantes -->
+                <div class="col-sm rep-card" style="display: none;">
+                    <div class="card custom-border" onclick="location.href = '/'">
+                        <div class="card-body">Revisar Calificaciones</div>
+                    </div>
                 </div>
-                <div class="col-sm">
-                    Calificaciones
+                <div class="col-sm rep-card" style="display: none;">
+                    <div class="card custom-border">
+                        <div class="card-body">
+                            Ver Calificaciones
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm">
-                    Administrador
+                <!-- Contenido para administradores -->
+                <div class="col-sm admin-card" style="display: none;">
+                    <div class="card custom-border">
+                        <div class="card-body">
+                            Administrador
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm">
-                    Administrador
+                <div class="col-sm admin-card" style="display: none;">
+                    <div class="card custom-border">
+                        <div class="card-body">
+                            Administrador
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm">
-                    Administrador
+                <div class="col-sm admin-card" style="display: none;">
+                    <div class="card custom-border">
+                        <div class="card-body">
+                            Administrador
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
